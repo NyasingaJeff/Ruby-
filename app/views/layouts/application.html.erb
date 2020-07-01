@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instagram</title>
+    <title>My Recipes</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,17 @@
   </head>
 
   <body>
-  <%# thiss will hel display erros etc %>
-    <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <!-- Navbar -->
+  <div class="container">
+    <%= render 'shared/navbar' if current_user%>
+  </div>
+  <div class="container">
+    <%# thiss will help display erros etc %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+  </div>
+      <%= render 'shared/footer' %>
+
   </body>
 </html>
