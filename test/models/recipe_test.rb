@@ -2,10 +2,11 @@ require 'test_helper'
 class RecipeTest < ActiveSupport::TestCase
     #  this is the class that will be used to test the Recipe class validations
     def setup 
-        @user = User.create(name:"Johnny",email:"johmny@gmail.com" )
+        @user = User.create(name:"Johnny",email:"johmny@gmail.com" ,password:"johnyrulles")
         @recipe = @user.recipes.build(name: "chipusi",summary: "chips ni viazi vilivyo katwa na kuokwa motoni",
             description:"viazi vilivyo pikwa it was first introduced to kenya from portogoal")
     end
+    
     # a recipe should belong to a specific user 
     test "user_id should be present" do
         @recipe.user_id= nil
@@ -13,7 +14,7 @@ class RecipeTest < ActiveSupport::TestCase
     end
     # should assert only ehen the recipe is valid according to the rules ir validations on Recipe
     test "recipe should be valid" do
-        assert @recipe.valid?
+        assert @recipe.valid?, "#{@recipe.inspect} and #{@user.inspect}"
     end
     # should not assert if the name dield of object is blank
     test "name should be present" do
@@ -24,7 +25,7 @@ class RecipeTest < ActiveSupport::TestCase
     test "name length should'nt be long " do
       @recipe.name="a"*101
       assert_not @recipe.valid?  
-    end
+    end 
     # name !>4
     test "name lenth shouldnt be too short" do
         @recipe.name="aaaa"
