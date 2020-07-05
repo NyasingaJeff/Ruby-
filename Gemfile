@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -32,6 +32,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # this should always be inside here before deploying to heroku
   gem 'sqlite3', '~> 1.4'
+  #this is used in the controllers that get a parameter from thr front end
   gem 'pry'
 
 
@@ -65,3 +66,7 @@ gem 'jquery-rails'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
+
+# added for image upload
+gem 'carrierwave','0.10.0'
+gem 'mini_magick'

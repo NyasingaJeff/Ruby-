@@ -2,7 +2,8 @@ require 'test_helper'
 class RecipeTest < ActiveSupport::TestCase
     #  this is the class that will be used to test the Recipe class validations
     def setup 
-        @user = User.create(name:"Johnny",email:"johmny@gmail.com" ,password:"johnyrulles")
+        # when useing creaate method .. an  error is thrown;
+        @user = User.new( id:4, name:"Johnny",email:"johmny@gmail.com" ,password:"johnyrulles")
         @recipe = @user.recipes.build(name: "chipusi",summary: "chips ni viazi vilivyo katwa na kuokwa motoni",
             description:"viazi vilivyo pikwa it was first introduced to kenya from portogoal")
     end

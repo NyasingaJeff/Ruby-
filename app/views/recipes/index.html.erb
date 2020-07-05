@@ -1,15 +1,15 @@
-<h1> index page</h1>
+<%= render 'shared/page_title', title: "All Recipes"%>
 <hr/>
 <%@recipes.each do |recipe|%>
     <div class ="row">
-        <div class="col-md-2">
+        <div class="col-md-2 grav">
             <section class= "user_info center">
                 <%= gravatar_for recipe.user, size:100 %>
                 <h5> User Name: <%=recipe.user.name%> </h5>
             </section>
         </div> 
-        <div class="col-lg-8 well">
-            <h4><%= link_to recipe.name,"" %> </h4>
+        <div class="col-lg-6 well">
+            <h4><%= link_to recipe.name,recipe_path(recipe) %> </h4>
             <p><%=  recipe.summary %> </p>
             <p>
                 <span class= "quiet">
@@ -18,6 +18,9 @@
                     </small>
                 </span>
             </p>            
+        </div>
+        <div class="col-md-2">
+            <%= image_tag(recipe.picture.url, size: "150x150", class: "gravatar") if recipe.picture?%>
         </div> 
     </div>
     <hr/>

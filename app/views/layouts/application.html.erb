@@ -16,12 +16,11 @@
   </div>
   <div class="container">
     <%# thiss will help display erros etc %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <%= render 'shared/messages' %>
+    <%# <%= render 'shared/errors' should we render the errors her or on the individual "create" or in in t his frmework "new"%>
       <%= yield %>
-  </div>
-  <div class = "container">
       <%= render 'shared/footer' %>
+  </div>
   </div>
   </body>
 </html>

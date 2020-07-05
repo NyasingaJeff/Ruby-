@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-fixed-top " >
   <div class="container">
-    <%= link_to "Recipes","", class: "bt  btn-lg btn-success" ,id:"logo"%>
+    <%= link_to "Recipes",root_path, class: "bt  btn-lg btn-success" ,id:"logo"%>
     <div class="nav_item">
         <%= link_to "Link one","", class:" btn btn-default btn-warning" %>
     </div>
@@ -15,7 +15,7 @@
         <%= link_to "Link one","", class: "btn btn-default btn-warning" %>
     </div>
      <div class="nav_item">
-        <%= link_to "Link one","", class: "btn btn-default btn-warning" %>
+        <%= link_to "New Recipe",new_recipe_path, class: "btn btn-default btn-warning" %>
     </div>
   </div>
 </nav>
