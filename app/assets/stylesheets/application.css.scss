@@ -143,8 +143,10 @@ h2{
 .use_info {
     margin-top: 10px;
 }
+// separate the two.... gravatar ya prof pik na ya recipe
 .gravatar{
     border-radius: 10px;
+    margin-top: 20px;
 }
 .grav{
    
@@ -152,6 +154,8 @@ h2{
     margin-right: 30px;
     color: #5cb85c;
     border-radius: 13px;
+    
+    
     
 
 }
@@ -184,4 +188,15 @@ span.picture{
 }
 .show_recipe{
     margin: 10px 10px 10px 10px;
+    
+}
+.glyphicon{
+    color: royalblue;
+    width: 20px;
+    height:20px ;
+}
+.buttons{
+    background-color: yellow;
+    width: 120px;
+    height:120px ;
 }

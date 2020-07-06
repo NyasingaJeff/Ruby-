@@ -1,7 +1,10 @@
+require 'pry'
 class RecipesController < ApplicationController
+   # protect_from_forgery
+
 # Rails automaticaly loads the page name that matches with the function
  def index
-     @recipes = Recipe.all
+     @recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_counter}.reverse
  end   
 
  def show #we can use "bindings.pry" to puth the server on hold, 
@@ -36,6 +39,19 @@ class RecipesController < ApplicationController
         render :edit
      end
  end
+ def like
+   
+    @recipe = Recipe.find(params[:id])
+    @like=Like.create(like: params[:like], user: User.first, recipe: @recipe ) #use the relationships GODDAMNIT
+    if @like.save #if save was succesfull
+      flash[:info]="Your like was recorded"
+      redirect_back fallback_location: root_path
+      #return home
+  else
+   flash[:danger]="Youve already Voted For this Recipe"
+   redirect_back fallback_location: root_path
+  end
+end
  private #private method
     def recipe_params # :recipe is the top most object
         params.require(:recipe).permit(:name,:summary,:description, :picture) #its called frst to check/ filter the vars to be passed to create

@@ -3,8 +3,8 @@
 <%@recipes.each do |recipe|%>
     <div class ="row">
         <div class="col-md-2 grav">
-            <section class= "user_info center">
-                <%= gravatar_for recipe.user, size:100 %>
+            <section class= "user_info center ">
+                <%= gravatar_for recipe.user, size:100  %>
                 <h5> User Name: <%=recipe.user.name%> </h5>
             </section>
         </div> 
@@ -17,9 +17,24 @@
                         <%= time_ago_in_words(recipe.created_at)%> ago 
                     </small>
                 </span>
-            </p>            
+            </p> 
+            <div class= "col-sm-7">
+                <%# <to offset thte others> %>
+                </div>
+                &nbsp
+                <div class= "col-sm-2">
+                    <%= button_to [:like, recipe,like: true],style: "background-color: transparent;border: transparent;" do %>
+                        <i class = "glyphicon glyphicon-thumbs-up"></i>&nbsp <%= recipe.thumbs_up_counter%>
+                    <% end  %>
+                </div>
+                    &nbsp&nbsp&nbsp
+                <div class = "col-sm-2">
+                    <%= button_to [:like, recipe, like: false],style: "background-color: transparent;border: transparent;" do %>
+                        <i class = "glyphicon glyphicon-thumbs-down"></i>&nbsp  <%= recipe.thumbs_down_counter%>
+                     <% end %>
+                </div>           
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2  ">
             <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture?%>
         </div> 
     </div>

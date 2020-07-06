@@ -20,6 +20,24 @@
                 <strong>Steps:</strong>
             </p>
             <%= simple_format(@recipe.description) %>
+                <div class= "col-sm-7">
+                <%# <to offset thte others> %>
+                </div>
+                &nbsp
+                <div class= "col-sm-2">
+                    <%= button_to [:like, @recipe,like: true],style: "background-color: transparent;border: transparent;" do %>
+                        <i class = "glyphicon glyphicon-thumbs-up"></i>&nbsp <%= @recipe.thumbs_up_counter%>
+                    <% end  %>
+                </div>
+                    &nbsp&nbsp&nbsp
+                <div class = "col-sm-2">
+                    <%= button_to [:like, @recipe, like: false],style: "background-color: transparent;border: transparent;" do %>
+                        <i class = "glyphicon glyphicon-thumbs-down"></i>&nbsp  <%= @recipe.thumbs_down_counter%>
+                     <% end %>
+                </div>
+                
+            
+                          
         </div>
     </div>
 </div>
