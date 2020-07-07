@@ -8,6 +8,8 @@ class Recipe < ActiveRecord::Base
     validates :description, presence: true, length: {minimum:20 , maximum:500 }
     mount_uploader :picture, PictureUploader  #Added after uploader
     validate :picture_size
+    #this is instruct active record how to pick,. the creteria
+    default_scope -> {order(updated_at: :desc)} #this would tell the active record to pick the recordsd in order of date of udate, in desc order
     def thumbs_up_counter
         self.likes.where(like: true).size
     end

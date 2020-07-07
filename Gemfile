@@ -70,3 +70,6 @@ gem 'sassc-rails', '>= 2.1.0'
 # added for image upload
 gem 'carrierwave','0.10.0'
 gem 'mini_magick'
+#this is for pagination
+gem 'will_paginate' #Pagination plugin for web frameworks and other apps
+gem 'bootstrap-will_paginate'# Format will_paginate html to match Twitter Bootstrap styling.

@@ -4,7 +4,9 @@ class RecipesController < ApplicationController
 
 # Rails automaticaly loads the page name that matches with the function
  def index
-     @recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_counter}.reverse
+    # @recipes = Recipe.all.sort_by{|likes| likes.thumbs_up_counter}.reverse #would sort the recipes in descending order of number of likes
+    #to impelement the pagination Gem
+    @recipes = Recipe.paginate(page: params[:page],per_page: 4) #will impelemn will paginate-> the last part ie the per page is optional
  end   
 
  def show #we can use "bindings.pry" to puth the server on hold, 
@@ -30,7 +32,7 @@ class RecipesController < ApplicationController
  def edit
     @recipe = Recipe.find(params[:id])
  end
- def update
+ def update 
      @recipe = Recipe.find(params[:id])
      if @recipe.update(recipe_params)
         flash[:success]= "Your Recipe has been updated"
