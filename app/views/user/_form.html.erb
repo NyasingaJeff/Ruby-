@@ -1,0 +1,19 @@
+
+<div class= "row">
+    <div class="well col-md-8">
+        <%= form_for( @user, html: {multipart: true}) do |f|%> <%#the 'html:' symbol was aadedd after image upload feaat was active%>
+            <%=f.label :name%>
+            <%=f.text_field :name%>
+            
+            <%=f.label :email%>
+            <%=f.text_field :email%>
+            
+            <%=f.label :password%>
+            <%=f.password_field :password, rows: 10 %>
+
+            <%=f.submit(@user.new_record? ? 'register': 'Edit user', class: "btn btn-success")%> <%# Be make sure not to forget the second"?" "%>
+        <%end%>
+    </div>
+</div>
+<%# this is tpo handle page size %>
+

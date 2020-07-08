@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  
   root to: 'pages#home'
   devise_for :users
+  get 'user/:id', to: 'user#show' , as: 'user_show'
+  get 'users', to: 'user#index' ,as:'users'
   # get '/recipes', to: 'recipes#index'
   # get '/recipe/new', to: 'recipes#create', as: 'new_recipe' #new so verb ni get
   # post '/recipes', to: 'recipes#create' ,as: 'store_recipe'

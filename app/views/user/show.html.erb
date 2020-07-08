@@ -1,0 +1,49 @@
+<%= render 'shared/page_title', title: 'Chef : '+ @user.name.capitalize %>
+
+<div class= "row">
+    <div class= "col-md-4 col-md-offset-4 center ">
+    <%= gravatar_for @user, size: 200%>
+    <hr/>
+    </div>
+</div>
+<div class= "row">
+   <div class= "col-md-4 col-md-offset-4 center">
+    <h3><em> Recipes : </em></h3>
+    <%= will_paginate @recipes%>
+   </div> 
+<div>
+<% @recipes.each do |recipe| %>
+<div class = "row">
+    <div class="col-lg-6 well col-lg-offset-3">
+        <h4><%= link_to recipe.name,recipe_path(recipe) %> </h4>
+        <p><%=  recipe.summary %> </p>
+        <p>
+            <span class= "quiet">
+                <small>
+                    Created :  <%= time_ago_in_words(recipe.created_at)%> ago &nbsp 
+                </small>
+            </span>
+            <span class= "quiet">
+                <small style="color:green;">
+                    Updated : <%= time_ago_in_words(recipe.updated_at)%> ago 
+                </small>
+            </span>
+        </p> 
+        
+            &nbsp
+            <div class= " col-sm-offset-7 col-sm-2">
+                <%= button_to [:like, recipe,like: true],style: "background-color: transparent;border: transparent;" do %>
+                    <i class = "glyphicon glyphicon-thumbs-up"></i>&nbsp <%= recipe.thumbs_up_counter%>
+                <% end  %>
+            </div>
+                &nbsp&nbsp&nbsp
+            <div class = "col-sm-2">
+                <%= button_to [:like, recipe, like: false],style: "background-color: transparent;border: transparent;" do %>
+                    <i class = "glyphicon glyphicon-thumbs-down"></i>&nbsp  <%= recipe.thumbs_down_counter%>
+                    <% end %>
+            </div>                 
+        </div>
+    </div>
+    <% end %>
+
+

@@ -12,7 +12,11 @@
   <body>
   <!-- Navbar -->
   <div class="container">
-    <%= render 'shared/navbar' if current_user%>
+    <% if current_user %>
+     <%= render 'shared/navbar'%>
+    <% else %>
+      <%= render 'shared/guestnav'%>
+    <% end %>
   </div>
   <div class="container">
     <%# thiss will help display erros etc %>

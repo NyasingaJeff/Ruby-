@@ -3,19 +3,40 @@
   <div class="container">
     <%= link_to "Recipes",root_path, class: "bt  btn-lg btn-success" ,id:"logo"%>
     <div class="nav_item">
-        <%= link_to "Link one","", class:" btn btn-default btn-warning" %>
+        <%= link_to "Edit Profile",edit_user_registration_path, class:" btn btn-default btn-warning", style: 'margin-top: 10px;' %> <%#we are not certain if we need to pass the current user.. or ust kavu%>
+    </div>
+    
+
+     <div class="nav_item">
+        <%= link_to "Link one","", class:" btn btn-default btn-warning", style: 'margin-top: 10px;' %>
     </div>
      <div class="nav_item">
-        <%= link_to "Link one","", class:" btn btn-default btn-warning" %>
+        <%= link_to "Link one","", class: "btn btn-default btn-warning", style: 'margin-top: 10px;' %>
     </div>
-     <div class="nav_item">
-        <%= link_to "Link one","", class:" btn btn-default btn-warning" %>
+     <div class="pull-right">
+      <div class= 'nav_item'>
+        <div class="dropdown">
+          <span>
+                <%= link_to '#', class:'btn btn-default btn-danger dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+              <%=current_user.name%><b class='caret'></b >
+          <%end %>
+          </span>
+          <div class="dropdown-content " , style= 'right: 0; margin-top:5px;'>
+            <div class= 'center'>
+              <p  ><%= link_to "New Recipe", new_recipe_path ,class: 'btn btn-success btn-small'%></p>
+              <hr/>
+              <p ><%= link_to "View profile", user_show_path(current_user), class:"btn  btn-small btn-warning ", style: "border-color: green;"%></p>
+              <p><%= link_to "Edit profile", edit_user_registration_path, class:"btn  btn-small  btn-warning", style: "border-color: amber;"%></p>
+              <hr/>
+              <p><%= button_to "Log Out ", destroy_user_session_path ,class: 'btn btn-danger btn-small',method: :delete %></p>
+            </div>
+          </div>
+      </div>
+      </div>     
     </div>
-     <div class="nav_item">
-        <%= link_to "Link one","", class: "btn btn-default btn-warning" %>
-    </div>
-     <div class="nav_item">
-        <%= link_to "New Recipe",new_recipe_path, class: "btn btn-default btn-warning" %>
-    </div>
+    
   </div>
 </nav>
+
+
+  
