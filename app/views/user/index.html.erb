@@ -1,19 +1,28 @@
 <%= render 'shared/page_title', title: "All Chefs"%>
 <div class="row">
+<ul class="nav nav-tabs">
+    <li >
+        <%= link_to "Recipes",recipes_path%>
+    </li>
+    <li class= "active">
+        <%= link_to "Chefs", users_path%>
+    </li>
+</ul>
     <div class= "col-md-4 col-md-offset-4 center">
         <%= will_paginate%>
     </div>
 </div>
+<hr/>
 
-<% @users.each do |user| %>
+<% @user.each do |user| %>
 <div class="row">
     <div class= "col-md-4 col-md-offset-4 center">
-        <%= link_to gravatar_for(user, size: 200), user_show(user)%>
+        <%= link_to gravatar_for(user, size: 200), user_show_path(user)%>
         <p>
             <h5>
-                Chef Name: <%=@user.name%>
+                Chef Name: <%=user.name.capitalize%>
             </h5>
         </p>
     </div>
-</div
+</div>
 <% end %>

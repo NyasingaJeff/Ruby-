@@ -1,34 +1,40 @@
 
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-fixed-top " >
   <div class="container">
-    <%= link_to "Recipes",root_path, class: "bt  btn-lg btn-success" ,id:"logo"%>
-    <div class="nav_item">
-        <%= link_to "Edit Profile",edit_user_registration_path, class:" btn btn-default btn-warning", style: 'margin-top: 10px;' %> <%#we are not certain if we need to pass the current user.. or ust kavu%>
-    </div>
+    <%= link_to "Recipes",recipes_path(current_user), class: "bt  btn-lg btn-success" ,id:"logo"%>
     
-
-     <div class="nav_item">
-        <%= link_to "Link one","", class:" btn btn-default btn-warning", style: 'margin-top: 10px;' %>
-    </div>
-     <div class="nav_item">
-        <%= link_to "Link one","", class: "btn btn-default btn-warning", style: 'margin-top: 10px;' %>
-    </div>
      <div class="pull-right">
       <div class= 'nav_item'>
         <div class="dropdown">
-          <span>
-                <%= link_to '#', class:'btn btn-default btn-danger dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+          <span>            
+            <%= link_to '#', class:'btn btn-default btn-danger dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+              <i class='glyphicon glyphicon-user' style="color:white;"></i>
               <%=current_user.name%><b class='caret'></b >
-          <%end %>
+            <%end %>
           </span>
-          <div class="dropdown-content " , style= 'right: 0; margin-top:5px;'>
+          <div class="dropdown-content " , style= 'right: 0; margin-top:5px; border:thin;'>
             <div class= 'center'>
-              <p  ><%= link_to "New Recipe", new_recipe_path ,class: 'btn btn-success btn-small'%></p>
+               <p >
+                  <%= link_to  new_recipe_path, class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    New Recipe <i class="glyphicon glyphicon-cutlery" style="color:white;"></i>
+                 <% end %>
+              </p>
+              <hr/>        
+               <p >
+                  <%= link_to  user_show_path(current_user), class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    View Profile <i class=" glyphicon glyphicon-eye-open" style="color:white;"></i>
+                 <% end %>
+              </p>
+              <p >
+                  <%= link_to  edit_user_registration_path, class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    Edit Profile <i class=" glyphicon glyphicon-pencil" style="color:white;"></i>
+                 <% end %>
+              </p>
               <hr/>
-              <p ><%= link_to "View profile", user_show_path(current_user), class:"btn  btn-small btn-warning ", style: "border-color: green;"%></p>
-              <p><%= link_to "Edit profile", edit_user_registration_path, class:"btn  btn-small  btn-warning", style: "border-color: amber;"%></p>
-              <hr/>
-              <p><%= button_to "Log Out ", destroy_user_session_path ,class: 'btn btn-danger btn-small',method: :delete %></p>
+              <p>
+                <%= button_to destroy_user_session_path ,class: 'btn btn-danger btn-small',method: :delete do%>
+                  Log Out<i class=" glyphicon glyphicon-off" style="color:white;"></i>
+                <% end %>
             </div>
           </div>
       </div>

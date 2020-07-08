@@ -4,7 +4,6 @@ class UserController < ApplicationController
         @recipes= @user.recipes.paginate(page: params[:page], per_page: 3) 
     end
     def index
-        @users = User.paginate(page: params[:page], per_page: 3)
+        @user = User.paginate(page: params[:page], per_page: 3)
     end     
 end
-   

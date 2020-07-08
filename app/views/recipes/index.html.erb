@@ -1,5 +1,17 @@
 <%= render 'shared/page_title', title: "All Recipes"%>
-<%= will_paginate %> <%# this will paginate.. and since we already provided the instance theres no need to provide it again%>
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li class= "active">
+            <%= link_to "Recipes",recipes_path%>
+        </li>
+        <li>
+            <%= link_to "Chefs", users_path%>
+        </li>
+    </ul>
+    <div class= "col-md-4 col-md-offset-4 center">
+            <%= will_paginate%>
+        </div>
+</div>
 <hr/>
 <%@recipes.each do |recipe|%>
     <div class ="row">
@@ -42,7 +54,8 @@
           
          </div>
         <div class="col-md-2  ">
-            <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture?%>
+        
+            <%= link_to image_tag(recipe.picture.url, size: "250x150", class: "gravatar") , recipe_path(recipe) if recipe.picture?%>
         </div> 
     </div>
     <hr/>
