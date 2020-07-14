@@ -3,6 +3,52 @@
 
   <div class="container">
       <%= link_to "Home",root_path, class: "bt  btn-lg btn-success" ,id:"logo"%>
+     <div class= 'nav_item'>
+        <div class="dropdown">
+          <span>            
+            <%= link_to '#', class:'btn btn-default btn-success dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+              <i class='glyphicon glyphicon-apple' style="color:white;"></i>
+              Styles : <b class='caret'></b >
+            <%end %>
+          </span>
+          <div class="dropdown-content " , style= 'margin-top:5px; border:thin;  '>
+            
+              <% Style.all.each do |style|%>
+                
+                  <p > 
+                    <%= link_to  style_path(style), class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    <%= style.name%> <i class="glyphicon glyphicon-grain" style="color:white;"></i>
+                    <% end %>
+                  </p>
+               
+              <% end %>           
+           
+          </div>
+        </div>
+      </div>
+      <div class= 'nav_item'>
+        <div class="dropdown">
+          <span>            
+            <%= link_to '#', class:'btn btn-default btn-success dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+              <i class='glyphicon glyphicon-grain' style="color:white;"></i>
+              Ingredients : <b class='caret'></b >
+            <%end %>
+          </span>
+          <div class="dropdown-content " , style= 'margin-top:5px; border:thin;'>
+          
+              <% Ingredient.all.each do |ingredient|%>
+                
+                  <p > 
+                    <%= link_to  ingredient_path(ingredient), class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    <%=ingredient.name%> <i class="glyphicon glyphicon-leaf" style="color:white;"></i>
+                    <% end %>
+                  </p>
+                              
+              <% end %>           
+           
+          </div>
+      </div>
+      </div>
   <div class= "pull-right">
     <div class="nav_item">
         <%= link_to "Log In",new_user_session_path, class:" btn btn-default btn-warning" %> <%#we are not certain if we need to pass the current user.. or ust kavu%>

@@ -3,6 +3,59 @@
   <div class="container">
     <%= link_to "Recipes",recipes_path(current_user), class: "bt  btn-lg btn-success" ,id:"logo"%>
     
+      <div class= 'nav_item'>
+        <div class="dropdown">
+          <span>            
+            <%= link_to '#', class:'btn btn-default btn-success dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+              <i class='glyphicon glyphicon-apple' style="color:white;"></i>
+              Styles : <b class='caret'></b >
+            <%end %>
+          </span>
+          <div class="dropdown-content " , style= 'margin-top:5px; border:thin;  '>
+            
+              <% Style.all.each do |style|%>
+                
+                  <p > 
+                    <%= link_to  style_path(style), class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    <%= style.name%> <i class="glyphicon glyphicon-grain" style="color:white;"></i>
+                    <% end %>
+                  </p>           
+              <% end %> 
+              <% if current_user %>
+                <hr/>
+                <%= link_to  new_style_path, class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    New Style<i class="glyphicon glyphicon-pencil" style="color:white;"></i>
+                    <% end %>
+              <% end %>          
+           
+          </div>
+        </div>
+      </div>
+      <div class= 'nav_item'>
+        <div class="dropdown">
+          <span>            
+            <%= link_to '#', class:'btn btn-default btn-success dropdown-toggle', 'data-toggle'=>'dropdown' do%>
+              <i class='glyphicon glyphicon-grain' style="color:white;"></i>
+              Ingredients : <b class='caret'></b >
+            <%end %>
+          </span>
+          <div class="dropdown-content " , style= 'margin-top:5px; border:thin;'>          
+              <% Ingredient.all.each do |ingredient|%>                
+                  <p > 
+                    <%= link_to  ingredient_path(ingredient), class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    <%=ingredient.name%> <i class="glyphicon glyphicon-leaf" style="color:white;"></i>
+                    <% end %>
+                  </p>                              
+              <% end %>
+               <% if current_user %>
+                <hr/>
+                <%= link_to  new_ingredient_path, class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
+                    New Ingredients <i class="glyphicon glyphicon-pencil" style="color:white;"></i>
+                    <% end %>
+              <% end %>             
+          </div>
+      </div>
+      </div>
      <div class="pull-right">
       <div class= 'nav_item'>
         <div class="dropdown">
@@ -13,7 +66,7 @@
             <%end %>
           </span>
           <div class="dropdown-content " , style= 'right: 0; margin-top:5px; border:thin;'>
-            <div class= 'center'>
+            
                <p >
                   <%= link_to  new_recipe_path, class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
                     New Recipe <i class="glyphicon glyphicon-cutlery" style="color:white;"></i>
@@ -35,10 +88,9 @@
                 <%= button_to destroy_user_session_path ,class: 'btn btn-danger btn-small',method: :delete do%>
                   Log Out<i class=" glyphicon glyphicon-off" style="color:white;"></i>
                 <% end %>
-            </div>
           </div>
       </div>
-      </div>     
+          
     </div>
     
   </div>

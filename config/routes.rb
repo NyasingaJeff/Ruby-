@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   # delete '/recipe/:id' , to: 'recipes#destroy', as: 'drop_recipe'
 
   # resouce method
-  resources :recipes do
+  resources :recipes do #saves time .. rather than typin it all .. all indivigual routes just write this
     member do
       post 'like'
     end
   end
+  resources :styles, only: [:new, :create, :show]
+  resources :ingredients, only: [:new, :create, :show]
+
 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

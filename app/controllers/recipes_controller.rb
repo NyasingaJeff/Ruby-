@@ -59,7 +59,7 @@ class RecipesController < ApplicationController
 end
  private #private method
     def recipe_params # :recipe is the top most object
-        params.require(:recipe).permit(:name,:summary,:description, :picture) #its called frst to check/ filter the vars to be passed to create
+        params.require(:recipe).permit(:name,:summary,:description, :picture ,style_ids:[],ingredient_ids: []) #its called frst to check/ filter the vars to be passed to create
     end
     
     def set_recipe

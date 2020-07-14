@@ -1,0 +1,12 @@
+<%= render 'shared/errors', obj: @ingredient %> 
+<div class= "row">
+    <div class="well col-md-8 col-md-offset-2">
+        <%= form_for @ingredient do |f|%> <%#the 'html:' symbol was aadedd after image upload feaat was active%>
+            <%=f.label :name%>
+            <%=f.text_field :name%>
+            <%=f.submit  'Submitt ingredient', class: "btn btn-success"%> <%# Be make sure not to forget the second"?" "%>
+        <%end%>
+    </div>
+</div>
+<%# this is tpo handle page size %>
+
