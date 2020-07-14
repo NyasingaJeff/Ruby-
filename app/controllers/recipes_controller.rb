@@ -1,4 +1,3 @@
-require 'pry'
 class RecipesController < ApplicationController
    before_action :set_recipe, only:[:update,:edit,:show,:like] #to eliminate @recipe= Recipe.find(id)
    before_action :require_login, except:[:show,:index]
