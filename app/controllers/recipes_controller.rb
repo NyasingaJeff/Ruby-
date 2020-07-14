@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
    before_action :set_recipe, only:[:update,:edit,:show,:like] #to eliminate @recipe= Recipe.find(id)
    before_action :require_login, except:[:show,:index]
    before_action :require_same_user , only:[:edit,:update] #specify the actrion
+   before_action :admin_user, only: :destroy
    # protect_from_forgery
 
 # Rails automaticaly loads the page name that matches with the function
@@ -44,9 +45,7 @@ class RecipesController < ApplicationController
         render :edit
      end
  end
- def like
-   
-    
+ def like  
     @like=Like.create(like: params[:like], user: User.first, recipe: @recipe ) #use the relationships GODDAMNIT
     if @like.save #if save was succesfull
       flash[:info]="Your like was recorded"
@@ -57,7 +56,12 @@ class RecipesController < ApplicationController
    redirect_back fallback_location: root_path
   end
 end
- private #private method
+def destroy
+   Recipe.find(params[:id]).destroy
+   flash[:success] = "Deleted succesfully"
+   redirect_to recipes_path
+end
+ private #private methods
     def recipe_params # :recipe is the top most object
         params.require(:recipe).permit(:name,:summary,:description, :picture ,style_ids:[],ingredient_ids: []) #its called frst to check/ filter the vars to be passed to create
     end
@@ -66,10 +70,14 @@ end
       @recipe = Recipe.find(params[:id])    
     end
     def require_same_user
-      if current_user != @recipe.user
+      if current_user != @recipe.user && !current_user.admin
          flash[:danger]='You can only edit your own recipes'
          redirect_back fallback_location: root_path
       else
       end
+      
     end
+    def admin_user
+      redirect_to recipes_path unless current_user.admin?
+   end
 end

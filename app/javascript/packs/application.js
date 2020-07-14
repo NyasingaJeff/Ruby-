@@ -11,7 +11,6 @@
 //=require("channels")
 //=require ("popper")
 //require("toastr")
-import {} from 'jquery-ujs'
 //= require bootstrap
 
 

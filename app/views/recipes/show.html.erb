@@ -12,9 +12,14 @@
   
     <div class= "col-md-8"> 
         <div class="pull-right">
-            <% if current_user && current_user == @recipe.user%>
+            <% if current_user && current_user == @recipe.user || current_user.admin? %>
                 <%= link_to edit_recipe_path, class:"btn  btn-small btn-success ", style: "border-color: green;" do%>
                 Edit this Recipe<i class=" glyphicon glyphicon-pencil" style="color:white;"></i>
+                <% end %>
+            <% end %>
+            <% if current_user.admin? %>
+                <%= button_to recipe_path(@recipe), class:"btn  btn-small btn-danger ", style: "border-color: red; width:100%; margin-top: 20px;", method: :delete, data: {confirm: "Are You sure"} do%>
+                 Delete<i class=" glyphicon glyphicon-trash" style="color:white;"></i>
                 <% end %>
             <% end %>
         </div>
